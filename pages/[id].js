@@ -1,2 +1,2 @@
-import newPokemon from "../../pages/newPokemon";
+import newPokemon from "./newPokemon";
 export default newPokemon;
