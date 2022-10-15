@@ -97,7 +97,6 @@ export function getPokemonBgColorOpacity(type) {
 }
 
 export function nameState(name) {
-  console.log({name});
   if(name === 'hp') return 'HP'
   if(name === 'attack') return 'ATK'
   if(name === 'defense') return 'DEF'

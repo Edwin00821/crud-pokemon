@@ -6,8 +6,21 @@ import Link from "next/link";
 import ListOfPokemons from "../components/ListOfPokemons";
 import { AiOutlinePlusSquare } from "react-icons/ai";
 
-export default function Home({ pokemonContext = [] }) {
-
+export default function Home({
+  pokemonContext = [
+    {
+      id_poke: 1,
+      name_poke: "bulbasaur",
+      weight_poke: 69,
+      height_poke: 7,
+      ability: "overgrow",
+      img_poke:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      types: [],
+      stats: [],
+    },
+  ],
+}) {
   const [pokemons, setPokemons] = useState(pokemonContext);
   const router = useRouter();
 
@@ -32,19 +45,17 @@ export default function Home({ pokemonContext = [] }) {
         <title>Pokedex</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-3xl text-white">Pokedex</h1>
-      <h2 className="text-white">Astudillo Perez Edwin Uriel</h2>
+      <h1 className="text-5xl text-white text-center">Pokedex</h1>
+      <h2 className="mt-4 text-white text-center">
+        Astudillo Perez Edwin Uriel
+      </h2>
       <Link href="/newPokemon">
         <a className="p-4 flex gap-5 items-center justify-items-center justify-center ">
           <AiOutlinePlusSquare color="white" size={40} />
           <p className="text-white">Agregar Pokemon</p>
         </a>
       </Link>
-      <Link href="/newPokemon">
-        <a className="text-white">
-          <ListOfPokemons pokemons={pokemons} className="" />
-        </a>
-      </Link>
+      <ListOfPokemons pokemons={pokemons} className="" />
     </div>
   );
 }
@@ -59,3 +70,12 @@ export const getServerSideProps = async (context) => {
     },
   };
 };
+// This gets called on every request
+// export async function getServerSideProps() {
+//   // Fetch data from external API
+//   const res = await fetch(`https://.../data`);
+//   const data = await res.json();
+
+//   // Pass data to the page via props
+//   return { props: { data } };
+// }

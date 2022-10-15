@@ -7,25 +7,25 @@ import { FaWeight, FaRulerVertical } from "react-icons/fa";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import PokemonElement from "./PokemonElement";
 import Stats from "./Stats";
+import Link from "next/link"
 
 export default function PokemonCard({
-    id = 25,
-    name = "Pikachu",
-    weight = 60,
-    height = 4,
-    abilities = "Static",
-    img = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-    types = [{ id_type: 1, name_type: "Electric" }],
-    stats = {
-      hp: 35,
-      atk: 55,
-      def: 40,
-      sp_def: 50,
-      sp_atk: 50,
-      speed: 90,
-    },
+  id = 25,
+  name = "Pikachu",
+  weight = 60,
+  height = 4,
+  abilities = "Static",
+  img = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+  types = [{ id_type: 1, name_type: "Electric" }],
+  stats = {
+    hp: 35,
+    atk: 55,
+    def: 40,
+    sp_def: 50,
+    sp_atk: 50,
+    speed: 90,
+  },
 }) {
-  
   return (
     <div className="h-full w-[22.5rem] bg-white shadow-2xl p-3 rounded-2xl">
       <section
@@ -36,7 +36,11 @@ export default function PokemonCard({
         <div className="font-bold text-center text-white flex p-5 justify-between">
           <h2 className="text-2xl uppercase">{name}</h2>
           <p>#{id}</p>
-          <AiOutlineEdit size={22} />
+          <Link href={"/pokemons/" + id}>
+            <a className="text-white">
+              <AiOutlineEdit size={22} />
+            </a>
+          </Link>
           <AiOutlineDelete size={22} />
         </div>
         <Image
@@ -56,7 +60,7 @@ export default function PokemonCard({
           />
         </div>
         <div className="bg-white mx-2 rounded-2xl p-5 pt-20">
-          <PokemonElement types={types}/>
+          <PokemonElement types={types} />
           <div>
             <h3
               className={`${getPokemonTxtColor(

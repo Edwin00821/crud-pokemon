@@ -48,7 +48,7 @@ async function getPokemons(req, res) {
     };
   });
 
-  // const DATA_POKES = await Promise.all(POKES);
+  const DATA_POKES = await Promise.all(POKES);
 
   res.status(200).json(DATA_POKES);
 }
